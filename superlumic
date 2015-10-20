@@ -115,7 +115,7 @@ else
         git clone -q $1 /usr/local/superlumic/config
     else
         setStatusMessage "Getting the default config"
-        git clone -q https://github.com/superlumic/superlumic-config.git /usr/local/superlumic/config
+        git clone -q https://github.com/kindlyops/superlumic-config.git /usr/local/superlumic/config
     fi
 fi
 
@@ -134,8 +134,8 @@ if [ -f "config/$USER.yml" ]; then
     ansible-playbook -i "localhost," config/$USER.yml
 else
     if [ "travis" = "$USER" ]; then
-        setStatusMessage "Running the ansible playbook for $USER but use roderik.yml as fallback"
-        ansible-playbook -i "localhost," config/roderik.yml
+        setStatusMessage "Running the ansible playbook for $USER but use emurphy.yml as fallback"
+        ansible-playbook -i "localhost," config/emurphy.yml
     else
         triggerError "No playbook for $USER found"
     fi
